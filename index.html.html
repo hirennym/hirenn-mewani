@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hirenn Mewani | Portfolio</title>
+    
+    <!-- Google Fonts: Inter (Body), JetBrains Mono (Tech), Space Grotesk (Main Heading) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brandBg: '#F5F5F0', 
+                        cardBg: '#FFFFFF',
+                        textMain: '#111111',
+                        borderMuted: '#D8D8D2',
+                        textMuted: '#6A6A66',
+                        accent: '#D9705E'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-title {
+            line-height: 0.95;
+            letter-spacing: 0.04em;
+        }
+
+        /* Panel Hover Effect */
+        .panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .panel-hover:hover {
+            transform: translateY(-6px);
+            border-color: #111111;
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth tab transition */
+        .tab-content {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-brandBg text-textMain font-sans antialiased selection:bg-textMain selection:text-brandBg">
+
+    <main class="max-w-[1280px] mx-auto px-8 md:px-20 pb-32">
+        
+        <!-- HERO SECTION: Clustered tighter in the center using max-w-[1050px] and gap-12 -->
+        <section class="min-h-screen flex flex-col justify-center pt-8">
+            <div class="max-w-[1050px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
+                
+                <!-- Left Info Column -->
+                <div class="md:col-span-7">
+                    <p class="text-[12px] font-mono uppercase tracking-[0.2em] text-textMuted mb-6">
+                        CS & MATH MAJOR / RESEARCHER
+                    </p>
+                    <h1 class="hero-title font-heading font-bold text-[80px] md:text-[104px] uppercase mb-8">
+                        HIRENN<br/>MEWANI
+                    </h1>
+                    <h2 class="text-2xl md:text-[28px] font-semibold tracking-tight mb-8 leading-snug">
+                        UW-Madison Computer Science and Mathematics double major (2026–2030). Building platforms, models, and systems.
+                    </h2>
+                    <div class="text-[17px] text-textMuted leading-relaxed max-w-xl space-y-5">
+                        <p>
+                            Currently building <strong class="text-textMain font-semibold">PawConnect</strong>, a location-aware animal-rescue platform mapping and optimizing responses for stray animals in distress.
+                        </p>
+                        <p>
+                            Also engaged in autonomous AI object detection, mathematical modelling via Markov Chains, and independently producing music.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Right Media Column -->
+                <div class="md:col-span-5 flex flex-col items-center mt-8 md:mt-0">
+                    <div class="w-full aspect-[4/3] rounded-[20px] overflow-hidden bg-[#EAE9E4] mb-6 border border-borderMuted shadow-sm">
+                        <img src="https://via.placeholder.com/800x600/D8D8D2/6A6A66?text=Portrait" alt="Hirenn Mewani" class="object-cover w-full h-full opacity-90" />
+                    </div>
+                    
+                    <div class="text-[11px] md:text-[12px] font-mono font-bold uppercase tracking-[0.15em] text-textMuted flex flex-wrap justify-center gap-x-5 gap-y-2 mb-5 text-center px-4">
+                        <span>SOFTWARE</span> <span>/</span>
+                        <span>MATHEMATICS</span> <span>/</span>
+                        <span>AI VISION</span>
+                    </div>
+                    
+                    <div class="text-[11px] md:text-[12px] font-mono uppercase tracking-[0.15em] text-textMuted text-center leading-[2]">
+                        <span class="text-accent font-bold">NOW</span> <span class="text-textMain font-bold">PAWCONNECT</span> / ANIMAL RESCUE PLATFORM<br>
+                        <span class="text-textMuted">ALSO</span> <span class="text-textMain font-bold">UW-MADISON</span> + <span class="text-textMain font-bold">RESEARCH</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVIGATION TABS -->
+        <div class="w-full mb-20 border-y border-textMain relative">
+            <nav class="flex justify-center overflow-x-auto hide-scrollbar pt-6 pb-0">
+                <ul id="navTabs" class="flex space-x-8 md:space-x-12 text-[14px] font-mono uppercase tracking-[0.2em] font-bold text-textMuted whitespace-nowrap px-4">
+                    <li><button data-target="overview" class="tab-btn text-textMain border-b-2 border-textMain pb-6 -mb-[1px] transition-all">OVERVIEW</button></li>
+                    <li><button data-target="experience" class="tab-btn hover:text-textMain border-b-2 border-transparent pb-6 -mb-[1px] transition-all">EXPERIENCE</button></li>
+                    <li><button data-target="projects" class="tab-btn hover:text-textMain border-b-2 border-transparent pb-6 -mb-[1px] transition-all">PROJECTS</button></li>
+                    <li><button data-target="publications" class="tab-btn hover:text-textMain border-b-2 border-transparent pb-6 -mb-[1px] transition-all">PUBLICATIONS</button></li>
+                    <li><button data-target="awards" class="tab-btn hover:text-textMain border-b-2 border-transparent pb-6 -mb-[1px] transition-all">AWARDS</button></li>
+                    <li><button data-target="contact" class="tab-btn hover:text-textMain border-b-2 border-transparent pb-6 -mb-[1px] transition-all">CONTACT</button></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- TAB CONTENTS -->
+        <div id="contentContainer" class="min-h-[500px]">
+            
+            <!-- ================= OVERVIEW TAB ================= -->
+            <div id="tab-overview" class="tab-content block">
+                <div class="mb-12">
+                    <h3 class="text-[13px] font-mono uppercase tracking-[0.2em] text-textMuted mb-8 font-bold">Education</h3>
+                    <hr class="border-borderMuted">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-12 py-10 border-b border-borderMuted gap-4">
+                        <div class="md:col-span-3 text-[12px] font-mono text-textMuted uppercase tracking-[0.1em] pt-1">
+                            2026 to 2030
+                        </div>
+                        <div class="md:col-span-9">
+                            <h4 class="font-bold text-[18px] text-textMain mb-1">University of Wisconsin-Madison</h4>
+                            <p class="text-[15px] text-textMain">B.S. Computer Science & Mathematics</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 py-10 border-b border-borderMuted gap-4">
+                        <div class="md:col-span-3 text-[12px] font-mono text-textMuted uppercase tracking-[0.1em] pt-1">
+                            2024 to 2026
+                        </div>
+                        <div class="md:col-span-9">
+                            <h4 class="font-bold text-[18px] text-textMain mb-1">Garodia International Centre for Learning Mumbai</h4>
+                            <p class="text-[15px] text-textMain mb-2">International Baccalaureate Diploma Program</p>
+                            <p class="text-[14px] text-textMuted font-mono">Grade 11: 39/42, 37/42 (HL: 20/21) [Math AA HL: 7, BM HL: 7, Phy HL: 6]</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 py-10 border-b border-borderMuted gap-4">
+                        <div class="md:col-span-3 text-[12px] font-mono text-textMuted uppercase tracking-[0.1em] pt-1">
+                            June 2025
+                        </div>
+                        <div class="md:col-span-9">
+                            <h4 class="font-bold text-[18px] text-textMain mb-1">Ashoka University</h4>
+                            <p class="text-[15px] text-textMain">Young Scholars Programme: Tech, Data & Computer Science</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 py-10 border-b border-borderMuted gap-4">
+                        <div class="md:col-span-3 text-[12px] font-mono text-textMuted uppercase tracking-[0.1em] pt-1">
+                            2022 to 2024
+                        </div>
+                        <div class="md:col-span-9">
+                            <h4 class="font-bold text-[18px] text-textMain mb-1">Nahar International School</h4>
+                            <p class="text-[15px] text-textMain mb-2">IGCSE Cambridge Boards</p>
+                            <p class="text-[14px] text-textMuted font-mono">Grade 10 Boards: 4A, 2B (Physics, Math, Computer Science - A)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= EXPERIENCE TAB ================= -->
+            <div id="tab-experience" class="tab-content hidden">
+                <div class="mb-10">
+                    <h3 class="text-[13px] font-mono uppercase tracking-[0.2em] text-textMuted mb-4 font-bold">Experience</h3>
+                    <p class="text-[16px] text-textMain mb-10 max-w-2xl">Positions across software development, industrial automation, athletics, and the arts. Shipping platforms and leading teams.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-8 md:p-10 panel-hover">
+                            <div class="text-[10px] font-mono text-textMuted uppercase tracking-widest mb-4 font-bold">JAN 2025 TO PRESENT</div>
+                            <h4 class="font-mono text-[22px] font-bold mb-1">Founder & Developer</h4>
+                            <p class="text-[14px] text-textMuted font-mono mb-5">PawConnect</p>
+                            <p class="text-[15px] text-textMuted leading-relaxed">
+                                Founded a location-aware animal-rescue platform enabling photo and GPS reporting for abandoned animals. Partnered with 10+ Mumbai NGOs including YODA. Projected launch impact: 2000+ downloads, 100+ rescues.
+                            </p>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-8 md:p-10 panel-hover">
+                            <div class="text-[10px] font-mono text-textMuted uppercase tracking-widest mb-4 font-bold">APR 2024 TO MAY 2024</div>
+                            <h4 class="font-mono text-[22px] font-bold mb-1">Intern - CS & Auto</h4>
+                            <p class="text-[14px] text-textMuted font-mono mb-5">ConnectWell Industries</p>
+                            <p class="text-[15px] text-textMuted leading-relaxed">
+                                Learned and assisted with PLC-based automation for connector-based assembly machines. Connected and calibrated industrial sensors, tested control circuits, and found systemic errors/malfunctions.
+                            </p>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-8 md:p-10 panel-hover">
+                            <div class="text-[10px] font-mono text-textMuted uppercase tracking-widest mb-4 font-bold">JAN 2025 TO DEC 2025</div>
+                            <h4 class="font-mono text-[22px] font-bold mb-1">School Sports Captain</h4>
+                            <p class="text-[14px] text-textMuted font-mono mb-5">GICLM</p>
+                            <p class="text-[15px] text-textMuted leading-relaxed">
+                                Elected to lead school athletics; coordinated training, inter-house, and interschool events. Led 350+ students during major ceremonies.
+                            </p>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-8 md:p-10 panel-hover">
+                            <div class="text-[10px] font-mono text-textMuted uppercase tracking-widest mb-4 font-bold">2020 TO PRESENT</div>
+                            <h4 class="font-mono text-[22px] font-bold mb-1">Music Producer</h4>
+                            <p class="text-[14px] text-textMuted font-mono mb-5">Independent (Footastiquuer)</p>
+                            <p class="text-[15px] text-textMuted leading-relaxed">
+                                Self-taught music producer. 8,000+ streams, 2,000+ global listeners across major platforms (Spotify, Apple Music). Most listened to artist for multiple listeners in yearly Spotify-Wrapped.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PROJECTS TAB ================= -->
+            <div id="tab-projects" class="tab-content hidden">
+                <div class="mb-10">
+                    <h3 class="text-[13px] font-mono uppercase tracking-[0.2em] text-textMuted mb-4 font-bold">Featured Projects</h3>
+                    <p class="text-[16px] text-textMain mb-10 max-w-2xl">Selected independent work across computer vision algorithms, machine learning, and hardware.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-gradient-to-br from-[#FDF7F3] to-[#F3E8E0] border border-[#E8DCD3] rounded-[24px] p-10 md:p-12 flex flex-col md:flex-row gap-10 shadow-sm panel-hover">
+                            <div class="md:w-1/2 flex flex-col justify-between">
+                                <div>
+                                    <div class="text-accent text-[11px] font-mono uppercase tracking-[0.15em] mb-5 font-bold">FEATURED</div>
+                                    <h4 class="font-mono text-[40px] font-bold mb-3 tracking-tight text-textMain">AI Vision</h4>
+                                    <p class="text-[13px] font-mono text-textMuted mb-8 uppercase tracking-widest font-bold">Independent Project</p>
+                                </div>
+                                <div class="flex gap-3 flex-wrap text-[10px] font-mono text-textMuted uppercase tracking-widest font-bold">
+                                    <span class="px-4 py-1.5 border border-[#D1BFA5] rounded-full bg-white/40">Python</span>
+                                    <span class="px-4 py-1.5 border border-[#D1BFA5] rounded-full bg-white/40">YOLO</span>
+                                    <span class="px-4 py-1.5 border border-[#D1BFA5] rounded-full bg-white/40">OpenCV</span>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 flex items-center">
+                                <p class="text-[15px] text-textMain leading-relaxed">
+                                    Built object-detection systems for self-driving car simulations (identifying roads, pedestrians, animals, signals) using CNNs, YOLO, and OpenCV. Optimized architectures to achieve 95%+ accuracy. Performed rigorous error analysis to reduce false positives/negatives.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-[#FDF7F3] to-[#F3E8E0] border border-[#E8DCD3] rounded-[24px] p-10 md:p-12 flex flex-col md:flex-row gap-10 shadow-sm panel-hover">
+                            <div class="md:w-1/2 flex flex-col justify-between">
+                                <div>
+                                    <div class="text-accent text-[11px] font-mono uppercase tracking-[0.15em] mb-5 font-bold">FEATURED</div>
+                                    <h4 class="font-mono text-[40px] font-bold mb-3 tracking-tight text-textMain">Hydro Rocket</h4>
+                                    <p class="text-[13px] font-mono text-textMuted mb-8 uppercase tracking-widest font-bold">Hardware / Physics</p>
+                                </div>
+                                <div class="flex gap-3 flex-wrap text-[10px] font-mono text-textMuted uppercase tracking-widest font-bold">
+                                    <span class="px-4 py-1.5 border border-[#D1BFA5] rounded-full bg-white/40">Engineering</span>
+                                    <span class="px-4 py-1.5 border border-[#D1BFA5] rounded-full bg-white/40">Hardware</span>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 flex items-center">
+                                <p class="text-[15px] text-textMain leading-relaxed">
+                                    Designed, assembled, and successfully deployed a fully functional hydro-powered rocket under a strict 90-minute time constraint. Won 1st Place in the IntraSchool Science Competition.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PUBLICATIONS TAB ================= -->
+            <div id="tab-publications" class="tab-content hidden">
+                <div class="mb-10">
+                    <h3 class="text-[13px] font-mono uppercase tracking-[0.2em] text-textMuted mb-4 font-bold">Publications & Research</h3>
+                    <p class="text-[16px] text-textMain mb-10 max-w-2xl">Academic research spanning algorithm modeling, graph theory, and mathematical structures.</p>
+                    
+                    <div class="grid grid-cols-1 gap-8">
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-10 panel-hover">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="text-[11px] font-mono text-textMuted uppercase tracking-widest font-bold">01 • RESEARCH PAPER</div>
+                            </div>
+                            <h4 class="font-mono text-[22px] font-bold mb-4 leading-snug">How do Markov chains and graph theory mathematically model ranking algorithms in PageRank?</h4>
+                            <p class="text-[13px] font-mono text-textMuted mb-6 font-bold">IBDP Extended Essay (4,000 words) • Dec 2024 - Oct 2025</p>
+                            <p class="text-[15px] text-textMuted leading-relaxed">
+                                Authored a 4,000-word research paper independently modeling Google's PageRank algorithm. Self-taught and applied advanced topics outside the standard curriculum including graph theory, Markov chains, eigenvalues/eigenvectors, and transition matrices.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= AWARDS TAB ================= -->
+            <div id="tab-awards" class="tab-content hidden">
+                <div class="mb-10">
+                    <h3 class="text-[13px] font-mono uppercase tracking-[0.2em] text-textMuted mb-4 font-bold">Awards & Honors</h3>
+                    <p class="text-[16px] text-textMain mb-10 max-w-2xl">Recognition across academic testing, science competitions, Model UN, and athletics.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-8 shadow-sm panel-hover">
+                            <h4 class="font-sans text-[20px] font-bold mb-3 text-textMain">SAT Math — 780</h4>
+                            <p class="text-[15px] text-textMuted">College Board SAT, Math section score.</p>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-8 shadow-sm panel-hover">
+                            <h4 class="font-sans text-[20px] font-bold mb-3 text-textMain">Basketball — Silver Medal</h4>
+                            <p class="text-[15px] text-textMuted">U18 Interschool Basketball Tournament.</p>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-8 shadow-sm panel-hover">
+                            <h4 class="font-sans text-[20px] font-bold mb-3 text-textMain">Science — 1st Place</h4>
+                            <p class="text-[15px] text-textMuted">IntraSchool Science Competition. Built a hydro-powered rocket under 90 minutes.</p>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-8 shadow-sm panel-hover">
+                            <h4 class="font-sans text-[20px] font-bold mb-3 text-textMain">MUN — High Commendation</h4>
+                            <p class="text-[15px] text-textMuted">Nahar International School Model UN Weapons Non-Proliferation Summit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= CONTACT TAB ================= -->
+            <div id="tab-contact" class="tab-content hidden">
+                <div class="mb-10">
+                    <h3 class="text-[13px] font-mono uppercase tracking-[0.2em] text-textMuted mb-4 font-bold">Contact</h3>
+                    <p class="text-[20px] text-textMain mb-10">Best way to reach me: email.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-10 flex flex-col justify-between panel-hover">
+                            <div class="text-[11px] font-mono text-textMuted uppercase tracking-widest mb-6 font-bold">EMAIL</div>
+                            <a href="mailto:hirennmewani2007@gmail.com" class="font-mono text-[16px] font-bold hover:text-accent transition-colors">
+                                hirennmewani2007@gmail.com ↗
+                            </a>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-10 flex flex-col justify-between panel-hover">
+                            <div class="text-[11px] font-mono text-textMuted uppercase tracking-widest mb-6 font-bold">LINKEDIN</div>
+                            <a href="https://linkedin.com/in/hirenn-mewani-155b06340" target="_blank" class="font-mono text-[16px] font-bold hover:text-accent transition-colors">
+                                linkedin.com/in/hirenn-mewani ↗
+                            </a>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-10 flex flex-col justify-between panel-hover">
+                            <div class="text-[11px] font-mono text-textMuted uppercase tracking-widest mb-6 font-bold">PHONE</div>
+                            <a href="tel:+918767667744" class="font-mono text-[16px] font-bold hover:text-accent transition-colors">
+                                +91 8767667744 ↗
+                            </a>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderMuted rounded-[16px] p-10 flex flex-col justify-between panel-hover">
+                            <div class="text-[11px] font-mono text-textMuted uppercase tracking-widest mb-6 font-bold">RESUME</div>
+                            <a href="Hirenn Mewani - Resume.pdf" target="_blank" class="font-mono text-[16px] font-bold hover:text-accent transition-colors">
+                                Download CV (PDF) ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Theme Icon -->
+    <div class="fixed bottom-8 right-8 w-14 h-14 bg-white border border-borderMuted rounded-full flex items-center justify-center shadow-sm text-accent cursor-pointer hover:scale-105 transition-transform z-50">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+    </div>
+
+    <!-- Tab Logic Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-target');
+
+                    // Reset all tabs
+                    tabs.forEach(t => {
+                        t.classList.remove('text-textMain', 'border-textMain');
+                        t.classList.add('border-transparent');
+                    });
+
+                    // Set active tab
+                    tab.classList.add('text-textMain', 'border-textMain');
+                    tab.classList.remove('border-transparent');
+
+                    // Show correct content
+                    contents.forEach(content => {
+                        if (content.id === `tab-${target}`) {
+                            content.classList.remove('hidden');
+                            content.classList.add('block');
+                        } else {
+                            content.classList.remove('block');
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
